@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="RollingFile" filename="crptapi.log"
+                     filePattern="$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="20MB"/>
+            </Policies>
+        </RollingFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+    </Appenders>
+
+<Loggers>
+    <Logger name="org.crptapi" level="info" additivity="false">
+        <AppenderRef ref="RollingFile"/>
+        <AppenderRef ref="Console"/>
+    </Logger>
+    <Root level="error">
+        <AppenderRef ref="RollingFile"/>
+        <AppenderRef ref="Console"/>
+    </Root>
+</Loggers>
+</Configuration>
