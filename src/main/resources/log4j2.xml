@@ -5,7 +5,7 @@
         <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n</Property>
     </Properties>
     <Appenders>
-        <RollingFile name="RollingFile" filename="crptapi.log"
+        <RollingFile name="RollingFile" filename="logs/crptapi.log"
                      filePattern="$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout>
                 <Pattern>${LOG_PATTERN}</Pattern>
